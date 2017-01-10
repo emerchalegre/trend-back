@@ -1,25 +1,23 @@
 <?php
+
 namespace Controllers;
 
 use Models;
 use Respect\Validation\Validator as v;
 
-class Clube extends Base
-{
+class Clube extends Base {
+
     /**
      * Pega todos clubes
      *
      * @return void
      */
-    public function get($request, $response, $args)
-	
-    {
-		
-		$stmt = $this->container['db']->prepare('SELECT * FROM generate_series(5,1,-2);');
-		$stmt->execute();
-		return $response->withJson($stmt->fetchAll());
-		//$response->getBody()->write(json_encode($stmt->fetchAll()));
-		
+    public function get($request, $response, $args) {
+
+        $stmt = $this->container['db']->prepare('SELECT * FROM generate_series(5,1,-2);');
+        $stmt->execute();
+        return $response->withJson($stmt->fetchAll());
+        //$response->getBody()->write(json_encode($stmt->fetchAll()));
     }
 
     /**
@@ -32,10 +30,9 @@ class Clube extends Base
      * @param array $args
      * @return void|Slim\Http\Response
      */
-    public function getById($request, $response, $args)
-    {
+    public function getById($request, $response, $args) {
         $id = $args['id'];
-        
+
         $validations = [
             v::intVal()->validate($id)
         ];
@@ -49,13 +46,11 @@ class Clube extends Base
                 echo self::encode($clube);
             } else {
                 $status = 404;
-                
+
                 echo $this->error(
-                    'get#clubes{id}',
-                    $request->getUri()->getPath(),
-                    $status
+                        'get#clubes{id}', $request->getUri()->getPath(), $status
                 );
-                
+
                 return $response->withStatus($status);
             }
         }
@@ -71,10 +66,9 @@ class Clube extends Base
      * @param array $args
      * @return void|Slim\Http\Response
      */
-    public function getUsuariosById($request, $response, $args)
-    {
+    public function getUsuariosById($request, $response, $args) {
         $id = $args['id'];
-        
+
         $validations = [
             v::intVal()->validate($id)
         ];
@@ -88,18 +82,16 @@ class Clube extends Base
                 echo self::encode($clube);
             } else {
                 $status = 404;
-                
+
                 echo $this->error(
-                    'get#clubes{id}usuarios',
-                    $request->getUri()->getPath(),
-                    $status
+                        'get#clubes{id}usuarios', $request->getUri()->getPath(), $status
                 );
-                
+
                 return $response->withStatus($status);
             }
         }
     }
-    
+
     /**
      * Inclui clube
      * $request e $response usam interface psr7
@@ -108,10 +100,9 @@ class Clube extends Base
      * @param Slim\Http\Response $response
      * @return Slim\Http\Response
      */
-    public function set($request, $response)
-    {
+    public function set($request, $response) {
         $nome = $this->httpPost('nome');
-        
+
         $validations = [
             v::stringType()->length(2)->validate($nome)
         ];
@@ -132,7 +123,7 @@ class Clube extends Base
             return $response->withStatus(201); // retorna status 201 quando resource é criado conforme spec para REST
         }
     }
-    
+
     /**
      * Atualiza o clube
      * $request e $response usam interface psr7
@@ -143,11 +134,10 @@ class Clube extends Base
      * @param array $args
      * @return void|Slim\Http\Response
      */
-    public function update($request, $response, $args)
-    {
+    public function update($request, $response, $args) {
         $id = $args['id'];
         $nome = $this->httpPost('nome');
-        
+
         $validations = [
             v::intVal()->validate($id),
             v::stringType()->length(2)->validate($nome)
@@ -157,25 +147,23 @@ class Clube extends Base
             return $response->withStatus(400);
         } else {
             $clube = Models\Clube::find($id);
-            
+
             if ($clube) {
                 $clube->clb_nome = $nome;
 
                 $clube->save();
             } else {
                 $status = 404;
-                
+
                 echo $this->error(
-                    'patch#clubes{id}',
-                    $request->getUri()->getPath(),
-                    $status
+                        'patch#clubes{id}', $request->getUri()->getPath(), $status
                 );
-                
+
                 return $response->withStatus($status);
             }
         }
     }
-    
+
     /**
      * Deleta o clube
      * $request e $response usam interface psr7
@@ -186,8 +174,7 @@ class Clube extends Base
      * @param array $args
      * @return void|Slim\Http\Response
      */
-    public function delete($request, $response, $args)
-    {
+    public function delete($request, $response, $args) {
         $id = $args['id'];
 
         $validations = [
@@ -201,15 +188,12 @@ class Clube extends Base
 
             if ($clube) {
                 $usuarios = $clube->relationUsuarios->all();
-                
+
                 if ($usuarios) {
                     $status = 403;
 
                     echo $this->error(
-                        'delete#clubes{id}',
-                        $request->getUri()->getPath(),
-                        $status,
-                        'FK_CONSTRAINT_ABORT'
+                            'delete#clubes{id}', $request->getUri()->getPath(), $status, 'FK_CONSTRAINT_ABORT'
                     );
 
                     return $response->withStatus($status);
@@ -218,15 +202,14 @@ class Clube extends Base
                 }
             } else {
                 $status = 404;
-                
+
                 echo $this->error(
-                    'delete#clubes{id}',
-                    $request->getUri()->getPath(),
-                    $status
+                        'delete#clubes{id}', $request->getUri()->getPath(), $status
                 );
-                
+
                 return $response->withStatus($status);
             }
         }
     }
+
 }
