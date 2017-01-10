@@ -1,0 +1,11 @@
+[2017-01-10 16:16:38] WARNING > #403: (/) - [] - {"url":"/","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"d2ca5cb"}
+[2017-01-10 16:24:24] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"8c35a99"}
+[2017-01-10 16:26:55] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"0adeadc"}
+[2017-01-10 16:28:25] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"14d83e1"}
+[2017-01-10 16:30:50] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"ce18eb1"}
+[2017-01-10 16:34:21] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"ffee694"}
+[2017-01-10 16:35:14] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"5ae1af2"}
+[2017-01-10 16:37:16] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"6386a03"}
+[2017-01-10 16:37:20] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"ae4d535"}
+[2017-01-10 16:39:02] WARNING > #403: (/) - [] - {"url":"/","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"db77721"}
+[2017-01-10 16:39:11] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"b524486"}

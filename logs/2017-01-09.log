@@ -1,0 +1,5 @@
+[2017-01-09 16:25:14] WARNING > #403: (/) - [] - {"url":"/","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"1e8966b"}
+[2017-01-09 16:27:55] WARNING > #404: (/clube) - [] - {"url":"/clube","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"e47da60"}
+[2017-01-09 16:28:04] WARNING > #404: (/Clube) - [] - {"url":"/Clube","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"bbe5f69"}
+[2017-01-09 16:28:08] WARNING > #404: (/Clube/get) - [] - {"url":"/Clube/get","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"eadb93f"}
+[2017-01-09 16:36:31] INFO > #200: (/clubes) - [] - {"url":"/clubes","ip":"::1","http_method":"GET","server":"localhost","referrer":null,"uid":"1fd435c"}

@@ -1,0 +1,27 @@
+{
+    "name": "jokeronaldo/crud-slim3",
+    "description": "REST service",
+    "keywords": ["sgconline", "rest", "api", "psr7"],
+    "license": "MIT",
+    "homepage": "http://www.slimframework.com",
+    "authors": [
+        {
+            "name": "Ronaldo Moreira Junior",
+            "email": "elj0k3r@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "src/controllers",
+            "src/middlewares",
+            "src/models"
+        ]
+    },
+    "require": {
+        "php": ">=5.5.0",
+        "slim/slim": "~3.0",
+        "monolog/monolog": "^1.17",
+        "illuminate/database": "^5.2",
+        "respect/validation": "^1.0"
+    }
+}
