@@ -14,7 +14,13 @@ class Clube extends Base {
      */
     public function get($request, $response, $args) {
 
-        $stmt = $this->container['db']->prepare('SELECT * FROM generate_series(5,1,-2);');
+        $stmt = $this->container['db']->prepare("select 
+                                                        *,
+                                                        senhausuario as  confirmarsenhausuario,
+                                                   case
+                                                     when idsituacao = 0 then 'Inativo'
+                                                     else 'Ativo' end as situacao
+                                                from usuario");
         $stmt->execute();
         return $response->withJson($stmt->fetchAll());
         //$response->getBody()->write(json_encode($stmt->fetchAll()));
@@ -101,8 +107,8 @@ class Clube extends Base {
      * @return Slim\Http\Response
      */
     public function set($request, $response) {
-        $nome = $this->httpPost('nome');
-
+        $nome = $this->httpPost('nomeusuario');
+        print_r($nome);exit;
         $validations = [
             v::stringType()->length(2)->validate($nome)
         ];
@@ -121,7 +127,9 @@ class Clube extends Base {
             echo $this->resource($path); // retorna a localização do resource conforme spec para REST
 
             return $response->withStatus(201); // retorna status 201 quando resource é criado conforme spec para REST
+            //echo json_encode(array('success' => true));
         }
+        
     }
 
     /**
