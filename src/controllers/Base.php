@@ -3,7 +3,7 @@ namespace Controllers;
 
 use \Slim\Container;
 
-class Base
+class Base extends \PDO
 {
 
     /**

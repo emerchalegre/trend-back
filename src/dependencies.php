@@ -23,6 +23,7 @@ $container['logger'] = function (\Slim\Container $c) {
     return $logger;
 };
 
+//banco de dados postgres
 $container['db'] = function (\Slim\Container $c) {
     
 	$settings = $c->get('settings')['database'];

@@ -14,16 +14,9 @@ class Clube extends Base {
      */
     public function get($request, $response, $args) {
 
-        $stmt = $this->container['db']->prepare("select 
-                                                        *,
-                                                        senhausuario as  confirmarsenhausuario,
-                                                   case
-                                                     when idsituacao = 0 then 'Inativo'
-                                                     else 'Ativo' end as situacao
-                                                from usuario");
-        $stmt->execute();
-        return $response->withJson($stmt->fetchAll());
-        //$response->getBody()->write(json_encode($stmt->fetchAll()));
+        $usuario = new \Models\Usuario($this->container['db']);
+        return $response->withJson($usuario->getUsuario());
+        
     }
 
     /**

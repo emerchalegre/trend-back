@@ -6,15 +6,16 @@
     "homepage": "http://www.slimframework.com",
     "authors": [
         {
-            "name": "Ronaldo Moreira Junior",
-            "email": "elj0k3r@gmail.com"
+            "name": "Fabio Gomes",
+            "email": "fabiogomes.gazin@gmail.com"
         }
     ],
     "autoload": {
         "classmap": [
             "src/controllers",
             "src/middlewares",
-            "src/models"
+            "src/models",
+            "src/models/Services"
         ]
     },
     "require": {
