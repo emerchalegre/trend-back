@@ -52,9 +52,9 @@ class Usuario extends Base{
         
         $usuario = new \Models\Services\GenericDBTable($this->container['db'], 'public.usuario');
         
-        $this->container['db']->beginTransaction();
-        
         try {
+            
+            $this->container['db']->beginTransaction();
             
             $vars = $this->getVars();
             
@@ -62,21 +62,22 @@ class Usuario extends Base{
             
             $this->container['db']->commit();
             
-            return $response->withJson(array('success' => true));
+            return $response->withJson(array('success' => 1));
             
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             
             $this->container['db']->rollBack();
 
             $error = $this->container['db']->errorInfo();
 
-            return $response->withJson(array('success' => false, 'error' => utf8_encode($error[2])));
+            return $response->withJson(array('success' => 0, 'error' => $error[2]));
             
         }
         
     }
 
     public function update($request, $response, $args) {
+        
         $vars = $this->getVars();
 
         $vars['id'] = $args['id'];

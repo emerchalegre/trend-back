@@ -81,7 +81,7 @@ class DBTable {
         $sql = $this->_generateInsertSQL($array);
 
         $insert = $this->_conexao->prepare($sql);
-
+        
         foreach ($this->_bind as $chave => $bind) {
             $insert->bindValue($chave + 1, $bind['valor'], $bind['tipo']);
         }
