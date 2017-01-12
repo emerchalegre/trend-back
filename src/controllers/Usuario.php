@@ -50,8 +50,8 @@ class Usuario extends Base{
 
     public function set($request, $response) {
 
-        //$conexao = $this->container['db'];
-        $conexao = new \PDO('pgsql:host=localhost;port=5432;dbname=trend_project', 'postgres', 'root');
+        $conexao = $this->container['db'];
+        //$conexao = new \PDO('pgsql:host=localhost;port=5432;dbname=trend_project', 'postgres', 'root');
         //print_r($conexao);exit;
         $usuario = new \Models\Services\GenericDBTable($conexao, 'public.usuario');
         
@@ -66,6 +66,7 @@ class Usuario extends Base{
             $conexao->commit();
             
             return $response->withJson(array('success' => 1));
+            //return $response->withStatus(200);
             
         } catch (\Exception $e) {
             
@@ -80,35 +81,32 @@ class Usuario extends Base{
     }
 
     public function update($request, $response, $args) {
+        print_r($args);exit;
+        $conexao = $this->container['db'];
+        $usuario = new \Models\Services\GenericDBTable($conexao, 'public.usuario');
         
-        $vars = $this->getVars();
+        try {
+            
+            $conexao->beginTransaction();
+            
+            $vars = $this->getVars();
+            $vars['idusuario'] = $args['id'];
+            
+            $usuario->update($vars, array('idusuario'));
+            
+            $conexao->commit();
+            
+            return $response->withJson(array('success' => 1));
+            //return $response->withStatus(200);
+            
+        } catch (\Exception $e) {
+            
+            $conexao->rollBack();
 
-        $vars['id'] = $args['id'];
+            $error = $conexao->errorInfo();
 
-        $validations = $this->validatePatchVars($vars);
-
-        if ($this->validate($validations) === false) {
-            return $response->withStatus(400);
-        } else {
-            $usuario = Models\Usuario::find($vars['id']);
-
-            if ($usuario) {
-                $usuario->usu_nome = $vars['nome'];
-                $usuario->usu_nascimento = $vars['nascimento'];
-                $usuario->usu_sobrenome = $vars['sobrenome'];
-                $usuario->usu_telefone = $vars['telefone'];
-                $usuario->usu_endereco = $vars['endereco'];
-
-                $usuario->save();
-            } else {
-                $status = 404;
-
-                echo $this->error(
-                        'patch#usuarios{id}', $request->getUri()->getPath(), $status
-                );
-
-                return $response->withStatus($status);
-            }
+            return $response->withJson(array('success' => 0, 'error' => $e->getMessage()));
+            
         }
     }
 
