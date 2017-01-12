@@ -49,28 +49,31 @@ class Usuario extends Base{
     }
 
     public function set($request, $response) {
-        
-        $usuario = new \Models\Services\GenericDBTable($this->container['db'], 'public.usuario');
+
+        //$conexao = $this->container['db'];
+        $conexao = new \PDO('pgsql:host=localhost;port=5432;dbname=trend_project', 'postgres', 'root');
+        //print_r($conexao);exit;
+        $usuario = new \Models\Services\GenericDBTable($conexao, 'public.usuario');
         
         try {
             
-            $this->container['db']->beginTransaction();
+            $conexao->beginTransaction();
             
             $vars = $this->getVars();
             
             $usuario->insert($vars);
             
-            $this->container['db']->commit();
+            $conexao->commit();
             
             return $response->withJson(array('success' => 1));
             
         } catch (\Exception $e) {
             
-            $this->container['db']->rollBack();
+            $conexao->rollBack();
 
-            $error = $this->container['db']->errorInfo();
+            $error = $conexao->errorInfo();
 
-            return $response->withJson(array('success' => 0, 'error' => $error[2]));
+            return $response->withJson(array('success' => 0, 'error' => $e->getMessage()));
             
         }
         

@@ -91,6 +91,7 @@ class DBTable {
         if (!$insert->execute()) {
             $this->errorInfo = $insert->errorInfo();
             $erro = $this->_conexao->errorInfo();
+            //print_r($erro);
             throw new DBTableException($erro[2] . ' - ' . $this->_table);
         } else {
             $result = $insert->fetch();
