@@ -12,6 +12,7 @@ class Base
      * @var \Slim\Container
      */
     protected $container;
+    protected $conexao;
 
     /**
      * Construtor
@@ -22,6 +23,7 @@ class Base
     public function __construct(Container $container)
     {
         $this->container = $container;
+        $this->conexao = $this->container['db'];
     }
     
     /**

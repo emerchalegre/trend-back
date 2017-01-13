@@ -43,8 +43,8 @@ $container['db'] = function (\Slim\Container $c) {
 
     $settings = $c->get('settings')['database'];
     $pdo = new \PDO("{$settings['driver']}:host={$settings['host']};port={$settings['port']};dbname={$settings['database']}", $settings['username'], $settings['password']);
-    //$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
     return $pdo;
 };
 

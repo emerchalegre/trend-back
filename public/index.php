@@ -1,12 +1,5 @@
 <?php
-/**
- * @api
- *
- * @author Ronaldo Moreira Junior <elj0k3r@gmail.com>
- * @version v2
- * @since v1 07/07/2015
- *
- */
+
 
 if (PHP_SAPI == 'cli-server') {
     $file = __DIR__ . $_SERVER['REQUEST_URI'];

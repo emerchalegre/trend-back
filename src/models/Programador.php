@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class Usuario {
+class Programador {
 
     private $conexao;
 
@@ -10,17 +10,16 @@ class Usuario {
         $this->conexao = $conexao;
     }
 
-    public function getUsuario() {
+    public function getProgramador() {
 
         $stmt = $this->conexao->prepare("
             select 
             *,
-            senhausuario as  confirmarsenhausuario,
            case
              when idsituacao = 0 then 'Inativo'
              else 'Ativo' end as situacao
         from 
-            usuario
+            programadores
         where 
             idsituacao = 1");
         

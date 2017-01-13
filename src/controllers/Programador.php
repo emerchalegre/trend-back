@@ -2,11 +2,11 @@
 
 namespace Controllers;
 
-class Usuario extends Base{
+class Programador extends Base{
     
     public function get($request, $response, $args) {
-        $usuario = new \Models\Usuario($this->conexao);
-        return $response->withJson($usuario->getUsuario());
+        $programador = new \Models\Programador($this->conexao);
+        return $response->withJson($programador->getProgramador());
     }
 
     public function getById($request, $response, $args) {
@@ -19,11 +19,11 @@ class Usuario extends Base{
         if ($this->validate($validations) === false) {
             return $response->withStatus(400);
         } else {
-            $usuario = Models\Usuario::with('relationClube', 'relationPlano')
+            $programador = Models\Usuario::with('relationClube', 'relationPlano')
                     ->find($id);
 
-            if ($usuario) {
-                echo self::encode($usuario);
+            if ($programador) {
+                echo self::encode($programador);
             } else {
                 $status = 404;
 
@@ -38,11 +38,9 @@ class Usuario extends Base{
     
     public function getVars() {
         $vars = array(
-            'nomeusuario'  => $this->httpPost('nomeusuario'),
-            'loginusuario' => $this->httpPost('loginusuario'),
-            'senhausuario' => $this->httpPost('senhausuario'),
-            'emailusuario' => $this->httpPost('emailusuario'),
-            'idsituacao'   => $this->httpPost('idsituacao')
+            'nomeprogramador'  => $this->httpPost('nomeprogramador'),
+            'emailprogramador' => $this->httpPost('emailprogramador'),
+            'idsituacao'       => $this->httpPost('idsituacao')
         );
         
         return $vars;
@@ -50,7 +48,7 @@ class Usuario extends Base{
 
     public function post($request, $response) {
 
-        $usuario = new \Models\Services\GenericDBTable($this->conexao, 'public.usuario');
+        $programador = new \Models\Services\GenericDBTable($this->conexao, 'public.programadores');
         
         try {
             
@@ -58,7 +56,7 @@ class Usuario extends Base{
             
             $vars = $this->getVars();
             
-            $usuario->insert($vars);
+            $programador->insert($vars);
             
             $this->conexao->commit();
             
@@ -77,7 +75,7 @@ class Usuario extends Base{
 
     public function update($request, $response, $args) {
 
-        $usuario = new \Models\Services\GenericDBTable($this->conexao, 'public.usuario');
+        $programador = new \Models\Services\GenericDBTable($this->conexao, 'public.usuario');
         
         try {
             
@@ -86,7 +84,7 @@ class Usuario extends Base{
             $vars = $this->getVars();
             $vars['idusuario'] = $args['id'];
             
-            $usuario->update($vars, array('idusuario'));
+            $programador->update($vars, array('idusuario'));
             
             $this->conexao->commit();
             
@@ -104,13 +102,13 @@ class Usuario extends Base{
 
     public function delete($request, $response, $args) {
         
-        $usuario = new \Models\Services\GenericDBTable($this->conexao, 'public.usuario');
+        $programador = new \Models\Services\GenericDBTable($this->conexao, 'public.usuario');
         
         try {
             
             $this->conexao->beginTransaction();
             
-            $usuario->delete(array('idusuario'=>$args['id']));
+            $programador->delete(array('idusuario'=>$args['id']));
             
             $this->conexao->commit();
             
