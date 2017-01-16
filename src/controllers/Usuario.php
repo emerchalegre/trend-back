@@ -9,38 +9,17 @@ class Usuario extends Base{
         return $response->withJson($usuario->getUsuario());
     }
 
-    public function getById($request, $response, $args) {
-        $id = $args['id'];
-
-        $validations = [
-            v::intVal()->validate($id)
-        ];
-
-        if ($this->validate($validations) === false) {
-            return $response->withStatus(400);
-        } else {
-            $usuario = Models\Usuario::with('relationClube', 'relationPlano')
-                    ->find($id);
-
-            if ($usuario) {
-                echo self::encode($usuario);
-            } else {
-                $status = 404;
-
-                echo $this->error(
-                        'get#usuarios{id}', $request->getUri()->getPath(), $status
-                );
-
-                return $response->withStatus($status);
-            }
-        }
+    public function getByName($request, $response, $args) {
+        $nome = $args['id'];
+        $usuario = new \Models\Usuario($this->conexao);
+        return $response->withJson($usuario->getUsuarioByName($nome));
     }
     
     public function getVars() {
         $vars = array(
             'nomeusuario'  => $this->httpPost('nomeusuario'),
             'loginusuario' => $this->httpPost('loginusuario'),
-            'senhausuario' => $this->httpPost('senhausuario'),
+            'senhausuario' => sha1($this->httpPost('senhausuario')),
             'emailusuario' => $this->httpPost('emailusuario'),
             'idsituacao'   => $this->httpPost('idsituacao')
         );
