@@ -17,7 +17,6 @@ $app->delete("/usuarios/{id}", "Controllers\Usuario:delete");
 // Programadores
 $app->get("/programadores", "Controllers\Programador:get");
 $app->get("/programadores/{id}", "Controllers\Programador:getByName");
-$app->get("/programadores/{id}/dependentes", "Controllers\Programador:getDependentesById");
 $app->post("/programadores", "Controllers\Programador:post");
 $app->patch("/programadores/{id}", "Controllers\Programador:update");
 $app->delete("/programadores/{id}", "Controllers\Programador:delete");

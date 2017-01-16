@@ -22,7 +22,8 @@ class Usuario {
         from 
             usuario
         where 
-            idsituacao = 1");
+            idsituacao = 1
+        order by nomeusuario");
         
         $stmt->execute();
         
