@@ -20,5 +20,15 @@ class Combo {
         return $stmt->fetchAll();
     }
     
+    public function getSistemas() {
+
+        $stmt = $this->conexao->prepare("
+            select * from sistemas");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
 
 }

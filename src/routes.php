@@ -7,6 +7,10 @@ $app->get('/', function (RequestInterface $request, ResponseInterface $response,
     return $response->withStatus(403)->write('Forbidden.');
 });
 
+//Classe combos
+$app->get("/classificacao", "Controllers\Combo:getClassificacao");
+$app->get("/sistemas", "Controllers\Combo:getSistemas");
+
 // Usuários
 $app->get("/usuarios", "Controllers\Usuario:get");
 $app->get("/usuarios/{id}", "Controllers\Usuario:getByName");
@@ -24,5 +28,3 @@ $app->delete("/programadores/{id}", "Controllers\Programador:delete");
 //Projeto
 $app->get("/projetos", "Controllers\Projeto:get");
 
-//Combo Classificação
-$app->get("/classificacao", "Controllers\Classificacao:get");
