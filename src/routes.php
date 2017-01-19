@@ -24,3 +24,5 @@ $app->delete("/programadores/{id}", "Controllers\Programador:delete");
 //Projeto
 $app->get("/projetos", "Controllers\Projeto:get");
 
+//Combo Classificação
+$app->get("/classificacao", "Controllers\Classificacao:get");
