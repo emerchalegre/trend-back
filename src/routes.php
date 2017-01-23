@@ -10,6 +10,12 @@ $app->get('/', function (RequestInterface $request, ResponseInterface $response,
 //Classe combos
 $app->get("/classificacao", "Controllers\Combo:getClassificacao");
 $app->get("/sistemas", "Controllers\Combo:getSistemas");
+$app->get("/hora", "Controllers\Combo:getHoras");
+$app->get("/sistemasinternos", "Controllers\Combo:getSistemasInternos");
+$app->get("/sistemasexternos", "Controllers\Combo:getSistemasExternos");
+$app->get("/abrangencia", "Controllers\Combo:getAbrangencia");
+$app->get("/estabilidade", "Controllers\Combo:getEstabilidade");
+$app->get("/conhecimento", "Controllers\Combo:getConhecimento");
 
 // Usuários
 $app->get("/usuarios", "Controllers\Usuario:get");

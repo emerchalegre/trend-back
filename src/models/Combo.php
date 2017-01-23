@@ -30,5 +30,65 @@ class Combo {
         return $stmt->fetchAll();
     }
     
+    public function getHoras() {
+
+        $stmt = $this->conexao->prepare("
+            select * from quantidadehoras");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getSistemasInternos() {
+
+        $stmt = $this->conexao->prepare("
+            select * from quantidadesistemasinternos");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getSistemasExternos() {
+
+        $stmt = $this->conexao->prepare("
+            select * from quantidadesistemasexternos");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getAbrangencia() {
+
+        $stmt = $this->conexao->prepare("
+            select * from nivelabrangencia");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getEstabilidade() {
+
+        $stmt = $this->conexao->prepare("
+            select * from estabilidade");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getConhecimento() {
+
+        $stmt = $this->conexao->prepare("
+            select * from conhecimento");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
 
 }
