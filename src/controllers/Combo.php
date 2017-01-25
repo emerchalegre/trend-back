@@ -44,4 +44,9 @@ class Combo extends Base{
         $combo = new \Models\Combo($this->conexao);
         return $response->withJson($combo->getConhecimento());
     }
+    
+    public function getNivelRisco($request, $response, $args) {
+        $combo = new \Models\Combo($this->conexao);
+        return $response->withJson($combo->getNivelRisco());
+    }
 }

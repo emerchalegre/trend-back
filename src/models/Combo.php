@@ -90,5 +90,15 @@ class Combo {
         return $stmt->fetchAll();
     }
     
+    public function getNivelRisco() {
+
+        $stmt = $this->conexao->prepare("
+            select * from nivelderisco");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
 
 }

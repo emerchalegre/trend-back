@@ -16,6 +16,7 @@ $app->get("/sistemasexternos", "Controllers\Combo:getSistemasExternos");
 $app->get("/abrangencia", "Controllers\Combo:getAbrangencia");
 $app->get("/estabilidade", "Controllers\Combo:getEstabilidade");
 $app->get("/conhecimento", "Controllers\Combo:getConhecimento");
+$app->get("/nivelrisco", "Controllers\Combo:getNivelRisco");
 
 // Usuários
 $app->get("/usuarios", "Controllers\Usuario:get");
