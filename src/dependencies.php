@@ -23,21 +23,6 @@ $container['logger'] = function (\Slim\Container $c) {
     return $logger;
 };
 
-/*function one($p) { 
-    return function () use (&$p, &$r) {
-        if ($p) { $r = $p(); $p = null; }
-        return $r;
-    };
-}
-
-$container['db'] = $container->factory(function ($c) {
-     $settings = $c->get('settings')['database'];
-    $pdo = new \PDO("{$settings['driver']}:host={$settings['host']};port={$settings['port']};dbname={$settings['database']}", $settings['username'], $settings['password']);
-    //$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //$pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    return $pdo;
-});*/
-
 //banco de dados postgres
 $container['db'] = function (\Slim\Container $c) {
 

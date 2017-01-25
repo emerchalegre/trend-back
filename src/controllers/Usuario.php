@@ -4,15 +4,20 @@ namespace Controllers;
 
 class Usuario extends Base{
     
+    private $usuario;
+    
+    public function __construct(\Slim\Container $container) {
+        parent::__construct($container);
+        $this->usuario = new \Models\Usuario($this->conexao);
+    }
+    
     public function get($request, $response, $args) {
-        $usuario = new \Models\Usuario($this->conexao);
-        return $response->withJson($usuario->getUsuario());
+        return $response->withJson($this->usuario->getUsuario());
     }
 
     public function getByName($request, $response, $args) {
         $nome = $args['id'];
-        $usuario = new \Models\Usuario($this->conexao);
-        return $response->withJson($usuario->getUsuarioByName($nome));
+        return $response->withJson($this->usuario->getUsuarioByName($nome));
     }
     
     public function getVars() {
