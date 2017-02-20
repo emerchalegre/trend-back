@@ -34,4 +34,8 @@ $app->delete("/programadores/{id}", "Controllers\Programador:delete");
 
 //Projeto
 $app->get("/projetos", "Controllers\Projeto:get");
-
+$app->get("/projetos/{id}", "Controllers\Projeto:getByName");
+$app->get("/projetos/form/{id}", "Controllers\Projeto:getById");
+$app->post("/projetos", "Controllers\Projeto:post");
+$app->patch("/projetos/{id}", "Controllers\Projeto:update");
+$app->delete("/projetos/{id}", "Controllers\Projeto:delete");
