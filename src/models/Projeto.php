@@ -48,20 +48,30 @@ class Projeto {
         return $stmt->fetchAll();
     }
     
-    public function getProjetoById($id){
+    public function getSolicitantes($id){
         
         $stmt = $this->conexao->prepare("
             select 
-                p.*,
-                s.descricao as situacao
+                p.*
             from 
-                public.projeto p
-            left join 
-                public.projetosituacao s on p.idsituacao = s.idsituacao
+                public.projetosolicitantes p
             where 
-                p.idprojeto = {$id} and
-                p.idsituacao = 1
-           ");
+                p.idprojeto = {$id}");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getRiscos($id){
+        
+        $stmt = $this->conexao->prepare("
+            select 
+                p.*
+            from 
+                public.projetoriscos p
+            where 
+                p.idprojeto = {$id}");
         
         $stmt->execute();
         
