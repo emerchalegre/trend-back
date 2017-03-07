@@ -48,4 +48,16 @@ class Combo extends Base{
     public function getNivelRisco($request, $response, $args) {
         return $response->withJson($this->combo->getNivelRisco());
     }
+    
+    public function getSituacaoProjeto($request, $response, $args) {
+        return $response->withJson($this->combo->getSituacaoProjeto());
+    }
+    
+    public function getProjeto($request, $response, $args) {
+        return $response->withJson($this->combo->getProjeto());
+    }
+    
+    public function getProgramadores($request, $response, $args) {
+        return $response->withJson($this->combo->getProgramadores());
+    }
 }

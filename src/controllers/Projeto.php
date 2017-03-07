@@ -238,6 +238,7 @@ class Projeto extends Base{
             'entendimentodasolicitacao'    => $this->httpPost('formProjeto')['entendimentodasolicitacao'],
             'cenarioatual'                 => $this->httpPost('formProjeto')['cenarioatual'],
             'solucaoproposta'              => $this->httpPost('formProjeto')['solucaoproposta'],
+            'idsituacao'                   => $this->httpPost('formProjeto')['idsituacao'],
                 
             'idclassificacao'              => $this->httpPost('formProjetoDetalhes')['idclassificacao'],
             'demandalegal'                 => $this->httpPost('formProjetoDetalhes')['demandalegal'],
@@ -256,8 +257,8 @@ class Projeto extends Base{
             'investimentoprevisto'         => $this->httpPost('formProjetoDetalhes')['investimentoprevisto'],
             'ganhoanual'                   => $this->httpPost('formProjetoDetalhes')['ganhoanual'],
             'roi'                          => $this->httpPost('formProjetoDetalhes')['roi'],
-            'premissas'                    => $this->httpPost('formProjetoDetalhes')['premissas'],
-            'idsituacao'                   => 1
+            'premissas'                    => $this->httpPost('formProjetoDetalhes')['premissas']
+            
         );
         
         return $vars;

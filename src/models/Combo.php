@@ -100,5 +100,35 @@ class Combo {
         return $stmt->fetchAll();
     }
     
+    public function getSituacaoProjeto() {
+
+        $stmt = $this->conexao->prepare("
+            select * from projetosituacao");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getProjeto() {
+
+        $stmt = $this->conexao->prepare("
+            select idprojeto, titulo from projeto where idsituacao = 1");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getProgramadores() {
+
+        $stmt = $this->conexao->prepare("
+            select idprogramador, nomeprogramador from programadores order by nomeprogramador");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
 
 }

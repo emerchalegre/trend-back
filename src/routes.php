@@ -17,6 +17,9 @@ $app->get("/abrangencia", "Controllers\Combo:getAbrangencia");
 $app->get("/estabilidade", "Controllers\Combo:getEstabilidade");
 $app->get("/conhecimento", "Controllers\Combo:getConhecimento");
 $app->get("/nivelrisco", "Controllers\Combo:getNivelRisco");
+$app->get("/situacaoprojeto", "Controllers\Combo:getSituacaoProjeto");
+$app->get("/comboprojeto", "Controllers\Combo:getProjeto");
+$app->get("/comboprogramadores", "Controllers\Combo:getProgramadores");
 
 // Usuários
 $app->get("/usuarios", "Controllers\Usuario:get");
@@ -42,3 +45,9 @@ $app->patch("/projetos/{id}", "Controllers\Projeto:update");
 $app->delete("/projetos/{id}", "Controllers\Projeto:delete");
 $app->delete("/projetos/solicitantes/{id}", "Controllers\Projeto:removerSolicitante");
 $app->delete("/projetos/solicitantes/todos/{id}", "Controllers\Projeto:removerTodosSolicitante");
+
+//sprint
+$app->get("/sprint/{id}", "Controllers\Sprint:get");
+$app->get("/sprint/tarefas/{id}", "Controllers\Sprint:getTarefas");
+$app->post("/sprint", "Controllers\Sprint:post");
+$app->patch("/sprint/{id}", "Controllers\Sprint:update");
