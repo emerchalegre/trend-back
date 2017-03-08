@@ -51,3 +51,5 @@ $app->get("/sprint/{id}", "Controllers\Sprint:get");
 $app->get("/sprint/tarefas/{id}", "Controllers\Sprint:getTarefas");
 $app->post("/sprint", "Controllers\Sprint:post");
 $app->patch("/sprint/{id}", "Controllers\Sprint:update");
+$app->delete("/sprint/{id}", "Controllers\Sprint:delete");
+$app->delete("/sprint/tarefa/{id}", "Controllers\Sprint:deleteTarefa");

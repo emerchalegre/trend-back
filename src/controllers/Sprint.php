@@ -116,6 +116,52 @@ class Sprint extends Base{
             
         }
     }
+    
+    public function delete($request, $response, $args) {
+        
+        $sprint = new \Models\Services\GenericDBTable($this->conexao, 'public.sprint');
+        
+        try {
+            
+            $this->conexao->beginTransaction();
+            
+            $sprint->delete(array('idsprint'=>$args['id']));
+            
+            $this->conexao->commit();
+            
+            return $response->withJson(array('success' => 1));
+            
+        } catch (\Exception $e) {
+            
+            $this->conexao->rollBack();
+
+            return $response->withJson(array('success' => 0, 'error' => $e->getMessage()));
+            
+        }
+    }
+    
+    public function deleteTarefa($request, $response, $args) {
+        
+        $sprintTarefa = new \Models\Services\GenericDBTable($this->conexao, 'public.sprinttarefa');
+        
+        try {
+            
+            $this->conexao->beginTransaction();
+            
+            $sprintTarefa->delete(array('idtarefa'=>$args['id']));
+            
+            $this->conexao->commit();
+            
+            return $response->withJson(array('success' => 1));
+            
+        } catch (\Exception $e) {
+            
+            $this->conexao->rollBack();
+
+            return $response->withJson(array('success' => 0, 'error' => $e->getMessage()));
+            
+        }
+    }
 
 
     public function getVars(){
