@@ -21,6 +21,9 @@ $app->get("/situacaoprojeto", "Controllers\Combo:getSituacaoProjeto");
 $app->get("/comboprojeto", "Controllers\Combo:getProjeto");
 $app->get("/comboprogramadores", "Controllers\Combo:getProgramadores");
 
+//login
+$app->any("/login/[{id}]", "Controllers\Login:getLogin");
+
 // Usuários
 $app->get("/usuarios", "Controllers\Usuario:get");
 $app->get("/usuarios/{id}", "Controllers\Usuario:getByName");

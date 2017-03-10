@@ -22,7 +22,8 @@ class Sprint {
             from 
                 public.sprint 
             where 
-                idprojeto = {$id}");
+                idprojeto = {$id}
+            order by datasprint");
         
         $stmt->execute();
         

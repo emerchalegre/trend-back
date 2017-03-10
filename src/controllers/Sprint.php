@@ -42,7 +42,8 @@ class Sprint extends Base{
                     'horas'                => $i['horas'],
                     'datainiciocalculada'  => $i['datainiciocalculada'],
                     'datafinalcalculada'   => $i['datafinalcalculada'],
-                    'farol'                => $i['farol']
+                    'farol'                => $i['farol'],
+                    'titulotarefa'         => $i['titulotarefa']
                 );
                 
                 $sprintTarefa->insert($arrayTarefa);
@@ -89,7 +90,8 @@ class Sprint extends Base{
                     'horas'                => $i['horas'],
                     'datainiciocalculada'  => $i['datainiciocalculada'],
                     'datafinalcalculada'   => $i['datafinalcalculada'],
-                    'farol'                => $i['farol']
+                    'farol'                => $i['farol'],
+                    'titulotarefa'         => $i['titulotarefa']
                 );
                 
                 /*
