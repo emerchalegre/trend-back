@@ -52,7 +52,12 @@ $app->delete("/projetos/solicitantes/todos/{id}", "Controllers\Projeto:removerTo
 //sprint
 $app->get("/sprint/{id}", "Controllers\Sprint:get");
 $app->get("/sprint/tarefas/{id}", "Controllers\Sprint:getTarefas");
+$app->get("/tarefas", "Controllers\Sprint:getTarefasPlayStop");
 $app->post("/sprint", "Controllers\Sprint:post");
 $app->patch("/sprint/{id}", "Controllers\Sprint:update");
 $app->delete("/sprint/{id}", "Controllers\Sprint:delete");
 $app->delete("/sprint/tarefa/{id}", "Controllers\Sprint:deleteTarefa");
+
+//acompanha tarefa
+$app->get("/acompanha/{id}", "Controllers\AcompanhaTarefa:getSprints");
+$app->get("/acompanha/tarefas/{id}", "Controllers\AcompanhaTarefa:getTarefas");

@@ -19,6 +19,11 @@ class Sprint extends Base{
         return $response->withJson($this->sprint->getTarefas($args['id']));
     }
     
+    public function getTarefasPlayStop($request, $response){
+        return $response->withJson($this->sprint->getTarefasPlayStop());
+    }
+
+
     public function post($request, $response){
 
         $sprint       = new \Models\Services\GenericDBTable($this->conexao, 'public.sprint');
@@ -41,9 +46,7 @@ class Sprint extends Base{
                     'horasalmoco'          => $i['horasalmoco'],
                     'horas'                => $i['horas'],
                     'datainiciocalculada'  => $i['datainiciocalculada'],
-                    'datafinalcalculada'   => $i['datafinalcalculada'],
-                    'farol'                => $i['farol'],
-                    'titulotarefa'         => $i['titulotarefa']
+                    'datafinalcalculada'   => $i['datafinalcalculada']
                 );
                 
                 $sprintTarefa->insert($arrayTarefa);
@@ -89,9 +92,7 @@ class Sprint extends Base{
                     'horasalmoco'          => $i['horasalmoco'],
                     'horas'                => $i['horas'],
                     'datainiciocalculada'  => $i['datainiciocalculada'],
-                    'datafinalcalculada'   => $i['datafinalcalculada'],
-                    'farol'                => $i['farol'],
-                    'titulotarefa'         => $i['titulotarefa']
+                    'datafinalcalculada'   => $i['datafinalcalculada']
                 );
                 
                 /*
@@ -171,8 +172,7 @@ class Sprint extends Base{
         $vars = array(
             'idprojeto'     => $this->httpPost('idprojeto'),
             'titulosprint'  => $this->httpPost('form')['titulosprint'],
-            'datasprint'    => $this->httpPost('form')['datasprint'],
-            'idsituacao'    => 1
+            'datasprint'    => $this->httpPost('form')['datasprint']
         );
         
         return $vars;

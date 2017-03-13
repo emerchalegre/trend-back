@@ -14,11 +14,7 @@ class Sprint {
 
         $stmt = $this->conexao->prepare("
             select 
-                *,
-                case when idsituacao = 0 then
-                    'Finalizado' else  
-                    'Em Desenvolvimento' 
-                end as situacao 
+                *
             from 
                 public.sprint 
             where 
@@ -39,6 +35,24 @@ class Sprint {
                 public.sprinttarefa st
             where 
                 st.idsprint = {$id}");
+        
+        $stmt->execute();
+        
+        return $stmt->fetchAll();
+    }
+    
+    public function getTarefasPlayStop() {
+
+        $stmt = $this->conexao->prepare("
+            select 
+                t.idtarefa,
+                t.detalhe as descricaotarefa
+            from 
+                public.sprinttarefa t
+                left join public.sprint s on t.idsprint = s.idsprint    
+                left join public.projeto p on s.idprojeto = p.idprojeto
+            where 
+                p.idsituacao = 1");
         
         $stmt->execute();
         
