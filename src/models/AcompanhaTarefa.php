@@ -33,9 +33,11 @@ class AcompanhaTarefa {
 
         $stmt = $this->conexao->prepare("
             select 
-                sp.*
+                sp.*,
+                pr.nomeprogramador
             from 
                 public.sprinttarefa sp
+                left join public.programadores pr on sp.idprogramador = pr.idprogramador
             where 
                 sp.idsprint =
                   (
