@@ -22,7 +22,7 @@ $app->get("/comboprojeto", "Controllers\Combo:getProjeto");
 $app->get("/comboprogramadores", "Controllers\Combo:getProgramadores");
 
 //login
-$app->any("/login/[{id}]", "Controllers\Login:getLogin");
+$app->post("/login", "Controllers\Login:login");
 
 // Usuários
 $app->get("/usuarios", "Controllers\Usuario:get");

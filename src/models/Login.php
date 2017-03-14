@@ -10,11 +10,9 @@ class Login {
         $this->conexao = $conexao;
     }
     
-    public function getLogin($id) {
+    public function getLogin($login, $senha) {
         
-        $usuario = explode(',', $id);
-        
-        $stmt = $this->conexao->prepare("select * from usuario where loginusuario = '{$usuario[0]}' and senhausuario = '{$usuario[1]}'");
+        $stmt = $this->conexao->prepare("select * from usuario where loginusuario = '{$login}' and senhausuario = '{$senha}'");
         
         $stmt->execute();
         

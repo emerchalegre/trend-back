@@ -11,7 +11,19 @@ class Login extends Base{
         $this->login = new \Models\Login($this->conexao);
     }
     
-    public function getLogin($request, $response, $args) {
-        return $response->withJson($this->login->getLogin($args['id']));
+    public function login($request, $response) {
+        
+        $login = $this->getVars();
+        
+        return $response->withJson($this->login->getLogin($login['loginusuario'], $login['senhausuario']));
+    }
+    
+    public function getVars() {
+        $vars = array(
+            'loginusuario'  => $this->httpPost('loginusuario'),
+            'senhausuario'  => $this->httpPost('senhausuario')
+        );
+        
+        return $vars;
     }
 }
