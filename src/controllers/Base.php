@@ -25,7 +25,7 @@ class Base
         $this->container = $container;
         $this->conexao = $this->container['db'];
     }
-    
+
     /**
      * Pega uma variável $_GET definda em request
      *
@@ -55,7 +55,7 @@ class Base
             return null;
         }
     }
-    
+
     /**
      * Transforma um objeto em uma string no formato json
      *
@@ -71,7 +71,7 @@ class Base
             return json_encode($data, JSON_PRETTY_PRINT) . PHP_EOL;
         }
     }
-    
+
     /**
      * Cria um objeto de erro em string no formato json
      *
@@ -84,20 +84,20 @@ class Base
     public static function error($code, $path, $status, $extra = '')
     {
         $error = new \StdClass;
-        
+
         $error->error = [
             'code' => $code,
             'path' => $path,
             'status' => $status
         ];
-        
+
         if ($extra) {
             $error->error['extra'] = $extra;
         }
 
         return self::encode($error);
     }
-    
+
     /**
      * Cria um objeto de resource em string no formato json
      *
@@ -112,18 +112,18 @@ class Base
         $scheme = $uri->getScheme();
         $host = $uri->getHost();
         $port = $uri->getPort();
-        
+
         $location = $scheme . '://' . $host . ($port ? ':' . $port : null) . '/' . $path;
-        
+
         $resource = new \StdClass;
-        
+
         $resource->resource = [
             'location' => $location
         ];
 
         return self::encode($resource);
     }
-    
+
     /**
      * Checa uma lista de expressões booleanas
      *
@@ -142,7 +142,25 @@ class Base
                 }
             }
         }
-        
+
         return true;
+    }
+
+    /**
+     * Retornar a sessao pelo path
+     * @param  string $path
+     * @return array
+     */
+    public function getSession($path) {
+      return $this->container->session->get($path);
+    }
+
+    /**
+     * Seta sessao
+     * @param array $session
+     */
+    public function setSession($session) {
+      if(!empty($session))
+        $this->container->session = $session;
     }
 }

@@ -33,10 +33,11 @@ $container['db'] = function (\Slim\Container $c) {
     return $pdo;
 };
 
+$container['session'] = function ($c) {
+  return new \SlimSession\Helper;
+};
 
 // Injeta o container no Base controller
 $container['Base'] = function ($c) {
     return new Base($c);
 };
-
-
